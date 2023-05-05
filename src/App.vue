@@ -64,5 +64,5 @@ const invalidCar = ref<number>()
   <span>Person Value: {{ invalidPerson }}</span>
   <VSelect label="Person" v-model="invalidPerson" :items="people" :value-key="p => p.invalidKey" label-key="invalidKey" />
   <span>Car Value: {{ invalidCar }}</span>
-  <VSelect label="Car" v-model="invalidCar" :items="cars" :value-key="c => c.car_id" :label-key="c => `${c.year} ${c.model}`" />
+  <VSelect label="Car" v-model="invalidCar" :items="cars" value-key="car_id" :label-key="c => `${c.year} ${c.model}`" />
 </template>
