@@ -1,7 +1,7 @@
 <script 
   setup 
   lang="ts" 
-  generic="TValue extends string | number | boolean  | null | undefined, TList = {[key: string]: any}"
+  generic="TValue extends string | number | boolean | null | undefined, TList = { [key: string]: any }"
 >
 
 import {
@@ -13,12 +13,16 @@ import {
 } from '@headlessui/vue'
 import { computed } from 'vue';
 
+type KeyOfType<T, V> = keyof {
+    [P in keyof T as T[P] extends V ? P : never]: any
+}
+
 const props = defineProps<{
   modelValue: TValue
   label: string
   items: TList[]
-  valueKey: keyof TList | ((o: TList) => Exclude<TValue, undefined>)
-  labelKey: keyof TList | ((o: TList) => string)
+  valueKey: KeyOfType<TList, Exclude<TValue, undefined>> | ((o: TList) => Exclude<TValue, undefined>)
+  labelKey: KeyOfType<TList, string> | ((o: TList) => string)
 }>()
 
 defineEmits<{
