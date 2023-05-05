@@ -58,7 +58,7 @@ const invalidCar = ref<number>()
   <span>Person Value: {{ person }}</span>
   <VSelect label="Person" v-model="person" :items="people" :value-key="p => p.id" label-key="name" />
   <span>Car Value: {{ car }}</span>
-  <VSelect label="Car" v-model="car" :items="cars" :value-key="c => c.id" :label-key="c => `${c.make} ${c.model}`" />
+  <VSelect label="Car" v-model="car" :items="cars" value-key="id" :label-key="c => `${c.make} ${c.model}`" />
 
   <h2 class="text-lg font-bold mt-6">Type Errors</h2>
   <span>Person Value: {{ invalidPerson }}</span>
