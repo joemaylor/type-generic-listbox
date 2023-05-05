@@ -28,7 +28,7 @@ defineEmits<{
 const valueFn = computed(() => typeof props.valueKey === 'function' ? props.valueKey : ((o: TList) => o[props.valueKey as keyof TList] as Exclude<TValue, undefined>))
 const displayFn = computed(() => typeof props.labelKey === 'function' ? props.labelKey : ((o: TList) => o[props.labelKey as keyof TList]))
 
-const selectedItem = computed(() => props.items.find(valueFn.value))
+const selectedItem = computed(() => props.items.find(i => valueFn.value(i) === props.modelValue))
 </script>
 
 <template>
